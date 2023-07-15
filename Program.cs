@@ -61,7 +61,6 @@ Random random = new Random();
 Console.WriteLine("Welcome to Plantville!");
 
 
-
 string? choice = null;
 
 while (choice != "0")
@@ -207,9 +206,10 @@ void adoptPlant()
 
     Console.WriteLine();
     Console.WriteLine("Please select the plant you wish to adopt (enter 0 to return to main menu): ");
-   
+
     int adoptedPlant = Convert.ToInt32(Console.ReadLine());
     
+
 
     if (adoptedPlant == 0)
     {
@@ -246,6 +246,8 @@ void removePlant()
 void plantOfTheDay()
 {
     int randomInt = random.Next(1, plants.Count);
+
+   
     Console.WriteLine($"{plants[randomInt].Species}");
 
     if (!plants[randomInt].Sold) 
@@ -261,10 +263,13 @@ void plantOfTheDay()
         Console.WriteLine("Press 0 to return to the menu: ");
         string mainMenu = Console.ReadLine();
 
-        if (mainMenu == "0")
+        if (mainMenu == "0" || string.IsNullOrEmpty(mainMenu))
         {
             Console.Clear();
             return;
+        }else
+        {
+            Console.WriteLine("Please enter 0 if trying to return to the menu.");
         }
 
     }
