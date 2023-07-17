@@ -15,6 +15,17 @@ namespace ExtraVert
         public string? ZIP { get; set; }
         public bool Sold { get; set; }
 
+        enum Lighting
+        {
+             Low,
+             LowMid,
+             Mid,
+             HighMid,
+             High
+
+
+        }
+
 
     }
 }
