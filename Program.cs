@@ -71,6 +71,7 @@ while (choice != "0")
     3. Adopt a Plant
     4. Remove Plant
     5. Plant of the Day
+    6. Search Plants - Light Needs
     0. Exit
     ");
     choice = Console.ReadLine();
@@ -138,6 +139,20 @@ while (choice != "0")
         {
             Console.Clear();
             plantOfTheDay();
+            sectionDivider();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+
+        }
+    }
+    else if (choice == "6")
+    {
+        try
+        {
+            Console.Clear();
+            searchLightNeeds();
             sectionDivider();
         }
         catch (Exception ex)
@@ -275,6 +290,54 @@ void plantOfTheDay()
     }
     
     
+}
+
+void searchLightNeeds()
+{
+    Console.WriteLine("Please enter a number between 1 and 5, where 1 is Low Light and 5 is direct sun: ");
+    Console.Write("Choice:  ");
+    int lightNeedSearch = Convert.ToInt32(Console.ReadLine());
+    string ? lightLevelname = "";
+
+    switch (lightNeedSearch) 
+    {
+        case 1:
+            lightLevelname = "Low Light";
+            break;
+        case 2:
+            lightLevelname = "Low-Mid Light";
+            break;
+        case 3:
+            lightLevelname = "Mid Level Light";
+            break;
+        case 4:
+            lightLevelname = "Mid-High Level Light";
+            break;
+        case 5:
+            lightLevelname = "Direct Sun";
+            break;
+
+    }
+
+    List<Plant> lightNeedResults = new List<Plant>();
+
+    foreach( Plant plant in plants)
+    {
+        if (plant.LightNeeds == lightNeedSearch)
+        {
+            lightNeedResults.Add(plant);
+        }
+
+        
+    }
+    Console.WriteLine();
+    Console.WriteLine($"The following plants require {lightLevelname}:");
+    for (int i = 0; i < lightNeedResults.Count; i++)
+    {
+        
+        Console.WriteLine(lightNeedResults[i].Species);
+    }
+
 }
 
 void sectionDivider()
